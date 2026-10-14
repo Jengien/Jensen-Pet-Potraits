@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jensen Pet Portraits | Custom Digital Fine Art</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #1e2022;
+            --card-bg: #282a2d;
+            --text-main: #f0f2f5;
+            --text-muted: #a0a5ad;
+            --accent: #d4af37; /* Subtle antique gold accent */
+            --accent-hover: #e5be48;
+            --border: #383b40;
+            --badge-bg: #32363b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        header {
+            padding: 4rem 2rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.75rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+            color: var(--text-main);
+        }
+
+        .subtitle {
+            font-size: 1.15rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .hero-blurb {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 1.5rem;
+            text-align: left;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .hero-blurb p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-blurb p:last-child {
+            margin-bottom: 0;
+        }
+
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .badge {
+            background-color: var(--badge-bg);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 0.4rem 0.9rem;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .badge-highlight {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .gallery-section {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.75rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .artwork-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .artwork-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.3);
+        }
+
+        .img-wrapper {
+            width: 100%;
+            aspect-ratio: 4/5;
+            overflow: hidden;
+            background-color: #151618;
+            cursor: pointer;
+        }
+
+        .img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .artwork-card:hover .img-wrapper img {
+            transform: scale(1.03);
+        }
+
+        .artwork-info {
+            padding: 1.25rem;
+        }
+
+        .artwork-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .artwork-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .services-section {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .option-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.5rem;
+        }
+
+        .option-card h3 {
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .option-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .contact-section {
+            max-width: 700px;
+            margin: 4rem auto;
+            padding: 2.5rem 2rem;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .contact-button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: #121314;
+            font-weight: 600;
+            padding: 0.85rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 1.5rem;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .contact-button:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+            margin-top: 4rem;
+        }
+
+        /* Lightbox modal for viewing high-res artwork */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            border-radius: 4px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            header { padding-top: 2rem; }
+            .hero-blurb { padding: 1.25rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Jensen Pet Portraits</h1>
+        <div class="subtitle">Digital Fine Art & Custom Commissions</div>
+        
+        <div class="hero-blurb">
+            <p>Welcome to my pet portrait gallery. Each piece is crafted entirely by hand using digital painting software (ArtRage) combined with a graphics tablet—capturing every hair, texture, and character detail with traditional-style brush strokes.</p>
+            <p>I believe in true craftsmanship: <strong>no AI, filters, or automated generators are ever used</strong> in my workflow. Every portrait is a unique, bespoke piece built stroke-by-stroke from your reference photographs.</p>
+            
+            <div class="badge-container">
+                <span class="badge badge-highlight">✦ 100% Hand-Painted</span>
+                <span class="badge">No Generative AI</span>
+                <span class="badge">ArtRage Digital Media</span>
+                <span class="badge">Digital & Physical Delivery</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="gallery-section">
+            <h2 class="section-title">Portfolio Showcase</h2>
+            <div class="gallery-grid">
+                
+                <!-- Artwork Card 1 -->
+                <div class="artwork-card">
+                    <div class="img-wrapper" onclick="openLightbox('Renaissance1.jpg')">
+                        <img src="Renaissance1.jpg" alt="The Aristocratic Calico">
+                    </div>
+                    <div class="artwork-info">
+                        <div class="artwork-title">The Aristocratic Calico</div>
+                        <div class="artwork-desc">Digital oil in ArtRage | Classical style portrait</div>
+                    </div>
+                </div>
+
+                <!-- Artwork Card 2 -->
+                <div class="artwork-card">
+                    <div class="img-wrapper" onclick="openLightbox('BABYBOO.jpg')">
+                        <img src="BABYBOO.jpg" alt="Lady Babyboo">
+                    </div>
+                    <div class="artwork-info">
+                        <div class="artwork-title">Lady Babyboo</div>
+                        <div class="artwork-desc">Digital oil in ArtRage | Floral bonnet portrait</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="services-section">
+            <h2 class="section-title">Fulfillment & Delivery Options</h2>
+            <div class="options-grid">
+                <div class="option-card">
+                    <h3>Digital Master File</h3>
+                    <p>Receive a high-resolution print-ready file (300 DPI) sent straight to your email, ready for you to print at home or with a printer of your choice.</p>
+                </div>
+                <div class="option-card">
+                    <h3>Print & Framing Service</h3>
+                    <p>For an additional fee, I can arrange high-quality fine art printing, professional mounting, framing, and direct UK postage to your door.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-section">
+            <h2>Commission a Portrait</h2>
+            <p style="color: var(--text-muted); margin-top: 0.5rem;">Have a photo of your pet you would love converted into a custom painting? Send me an email with your photo and preferred style to discuss quotes and options.</p>
+            <a href="mailto:gienckej@gmail.com?subject=Pet%20Portrait%20Inquiry" class="contact-button">Email: gienckej@gmail.com</a>
+        </section>
+    </main>
+
+    <footer>
+        &copy; Jensen Pet Portraits. All Rights Reserved. Created by hand with ArtRage.
+    </footer>
+
+    <!-- Lightbox for viewing artwork -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Enlarged Artwork">
+    </div>
+
+    <script>
+        function openLightbox(imageSrc) {
+            document.getElementById('lightbox-img').src = imageSrc;
+            document.getElementById('lightbox').style.display = 'flex';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+
+        // Close lightbox when pressing ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+</body>
+</html>
